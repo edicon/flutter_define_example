@@ -12,5 +12,5 @@ Run and define your:
 - `DEFINE_APP_SUFFIX` value. If this parameter not provider, app
   suffix will be empty
 
-`flutter run --dart-define=DEFINE_APP_NAME=VeryAwesomeApp
+`flutter run --dart-define=DEFINE_APP_NAME=testApp
 --dart-define=DEFINE_APP_SUFFIX=.dev`
