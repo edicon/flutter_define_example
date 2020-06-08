@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
-
-class EnvironmentConfig {
-  static const APP_NAME = String.fromEnvironment(
-    'DEFINEEXAMPLE_APP_NAME',
-    defaultValue: 'awesomeApp'
-  );
-  static const APP_SUFFIX = String.fromEnvironment(
-      'DEFINEEXAMPLE_APP_SUFFIX'
-  );
-}
+import 'package:defineapp/env.dart';
 
 void main() => runApp(MyApp());
 
@@ -55,7 +46,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -123,8 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           value.data.packageName,
                           style: Theme.of(context).textTheme.headline6,
                         );
-                      }
-                  ),
+                      }),
                 ],
               ),
             ),
