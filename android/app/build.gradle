@@ -24,13 +24,23 @@ def dartEnvironmentVariables = [
     DEFINE_APP_NAME: 'awesomeApp',
     DEFINE_APP_SUFFIX: null
 ];
+println "BEFORE: dartEnvironmentVariables -> ${dartEnvironmentVariables}"
+println "      : dart-defines -> ${project.property('dart-defines')}, ${project.hasProperty('dart-defines')} "
 if (project.hasProperty('dart-defines')) {
     dartEnvironmentVariables = dartEnvironmentVariables + project.property('dart-defines')
         .split(',')
         .collectEntries { entry ->
-            def pair = entry.split('=')
-            [(pair.first()): pair.last()]
+            if(entry.contains('=')) {
+              def pair = entry.split('=')
+              [(pair.first()): pair.last()]
+            }
+            if(entry.contains('%3D')) {
+              def pair = entry.split('%3D')
+              [(pair.first()): pair.last()]
+            }
         }
+    println "AFTER: dartEnvironmentVariables -> ${dartEnvironmentVariables}"
+    println "     : dart-defines -> ${dartEnvironmentVariables.DEFINE_APP_NAME} ${dartEnvironmentVariables.DEFINE_APP_SUFFIX}"
 }
 
 apply plugin: 'com.android.application'
